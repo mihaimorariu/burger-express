@@ -6,8 +6,8 @@ class RecipeBookWindow(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.game = game
         
-        self.image_null, self.rect_null = LoadImage('Images', 'Null.jpg', (0, 0, 0))
-        self.image_normal, self.rect_normal = LoadImage('Images', 'paper2.png', None)        
+        self.image_null, self.rect_null = LoadImage('../images', 'Null.jpg', (0, 0, 0))
+        self.image_normal, self.rect_normal = LoadImage('../images', 'paper2.png', None)        
         self.mouse_over = False
         self.image, self.rect = self.image_null, self.rect_normal
         self.rect.topleft = (self.game.background.get_width()/ 2 - 220, self.game.background.get_height() / 2 - 306)

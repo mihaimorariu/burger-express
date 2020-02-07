@@ -183,7 +183,7 @@ class Game:
         self.time_until_new_clients = 3
         
         pygame.mixer.init()
-        self.background_music = pygame.mixer.Sound('Sounds/' + self.sounds_file_names[self.level - 1])
+        self.background_music = pygame.mixer.Sound('../sounds/' + self.sounds_file_names[self.level - 1])
         self.background_music.play(-1)
 
     def GetInputData(self):
@@ -251,7 +251,7 @@ class Game:
                 self.ResetWidgets()
                 self.pause = True
                 self.background_music.stop()
-                self.background_music = pygame.mixer.Sound('Sounds/ThePriceIsRight-LoserHorns.wav')
+                self.background_music = pygame.mixer.Sound('../sounds/ThePriceIsRight-LoserHorns.wav')
                 self.background_music.play()
         
         if self.pause == False:
@@ -285,7 +285,7 @@ class Game:
                     
                     if self.clients_orders[table_number] > 0:
                         self.unsatisfied_customers += 1
-                        fail_sound = pygame.mixer.Sound('Sounds/Wheel-of-Fortune-Buzzer.wav')
+                        fail_sound = pygame.mixer.Sound('../sounds/Wheel-of-Fortune-Buzzer.wav')
                         fail_sound.play()
                         
                     # ---------------------------------------- 
@@ -310,7 +310,7 @@ class Game:
                 if (self.minutes // self.number_of_minutes_per_level) + 1 > self.level: # New level
                     self.level = (self.minutes // self.number_of_minutes_per_level) + 1
                     self.background_music.stop()
-                    self.background_music = pygame.mixer.Sound('Sounds/' + self.sounds_file_names[(self.level - 1) % self.max_levels])
+                    self.background_music = pygame.mixer.Sound('../sounds/' + self.sounds_file_names[(self.level - 1) % self.max_levels])
                     self.background_music.play(-1)
                     
                 self.UpdateTimeVectors()

@@ -1,15 +1,15 @@
-import cv2.cv as cv
+import cv2
 import math
 import numpy
 
 class HandTracking:
     def __init__(self, threshold):
-        HandTracking.hsv_min = cv.Scalar(20, 70, 70)
-        HandTracking.hsv_max = cv.Scalar(30, 255, 255)
-#        HandTracking.ycc_min = cv.Scalar(0, 140, 90)
-#        HandTracking.ycc_max = cv.Scalar(255, 210, 130)
+        HandTracking.hsv_min = (20, 70, 70)
+        HandTracking.hsv_max = (30, 255, 255)
+#        HandTracking.ycc_min = (0, 140, 90)
+#        HandTracking.ycc_max = (255, 210, 130)
         HandTracking.hand_area_threshold = threshold
-        HandTracking.capture = cv.CaptureFromCAM(0)
+        HandTracking.capture = cv2.VideoCapture(0)
 
     # skin_image consists of the drawn convex hull (including polygon lines). hull4defects contains the hull in a different dataformat to be able to determine the defects.
     def ComputeHandPosition(self, skin_image, hand_contour, hull4defects):
@@ -50,7 +50,7 @@ class HandTracking:
         skin = cv.CreateImage(image_size, 8, 1)
         cv.CvtColor(query_image, query_image_hsv, cv.CV_BGR2HSV)
     
-        #cv.InRangeS(query_image_hsv, cv.Scalar(0, 30, 60), cv.Scalar(30, 150, 255), skin)
+        #cv.InRangeS(query_image_hsv, (0, 30, 60), (30, 150, 255), skin)
         #cv.Threshold(skin, skin, 50, 255, cv.CV_THRESH_BINARY)
         cv.InRangeS(query_image_hsv, HandTracking.hsv_min, HandTracking.hsv_max, skin)
         cv.Threshold(skin, skin, 50, 255, cv.CV_THRESH_BINARY)

@@ -9,7 +9,7 @@ class Client(pygame.sprite.Sprite):
         self.game = game
         self.table_number = table
 
-        self.image_no_client, self.rect_no_client = LoadImage('Images/Customers/Half Size', 'no_client.png', None)
+        self.image_no_client, self.rect_no_client = LoadImage('../images/Customers/Half Size', 'no_client.png', None)
         self.image, self.rect = self.image_no_client, self.rect_no_client
         self.rect.bottomleft = (55 + self.table_number * 180, self.game.restaurant_counter.rect.topleft[1])
 
@@ -45,14 +45,14 @@ class Client(pygame.sprite.Sprite):
                 elif mood == 3: # Impatient client
                     file_name = 'impatient' + str(image_index) + '.png'
                     
-                self.image, self.rect = LoadImage('Images/Customers/Half Size', file_name, None)
+                self.image, self.rect = LoadImage('../images/Customers/Half Size', file_name, None)
                 self.rect.bottomleft = (55 + self.table_number * 180, self.game.restaurant_counter.rect.topleft[1])
                 self.active = True
         else:
             if self.game.clients_orders[self.table_number] == 0: # This client left the table
                 self.image, self.rect = self.image_no_client, self.rect_no_client
                                 
-                #self.game.clients_dish_preference[self.table_number].image, self.game.clients_dish_preference[self.table_number].rect = LoadImage('Images', 'Null.jpg', (0, 0, 0))
+                #self.game.clients_dish_preference[self.table_number].image, self.game.clients_dish_preference[self.table_number].rect = LoadImage('../images', 'Null.jpg', (0, 0, 0))
                 #self.game.clients_dish_preference[self.table_number].rect.topleft = (85 + self.table_number * 180, self.game.restaurant_counter.rect.topleft[1] - 290)
                 self.active = False
 
@@ -156,14 +156,14 @@ class Client(pygame.sprite.Sprite):
                     self.game.clients_orders[self.table_number] = -1
                     self.game.clients_waiting_time[self.table_number] = 2
                     self.game.money += self.game.dish_price[self.game.clients_orders[self.table_number]]
-                    success_sound = pygame.mixer.Sound('Sounds/cash-register2.wav')
+                    success_sound = pygame.mixer.Sound('../sounds/cash-register2.wav')
                     success_sound.play()
                 else:
                     print 'Not correct meal'
                     self.game.clients_orders[self.table_number] = -2
                     self.game.clients_waiting_time[self.table_number] = 2
                     self.game.unsatisfied_customers += 1
-                    fail_sound = pygame.mixer.Sound('Sounds/Wheel-of-Fortune-Buzzer.wav')
+                    fail_sound = pygame.mixer.Sound('../sounds/Wheel-of-Fortune-Buzzer.wav')
                     fail_sound.play()
 
                 self.game.ingredients_queue = []

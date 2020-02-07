@@ -7,14 +7,14 @@ class IngredientRefillButton(pygame.sprite.Sprite):
         self.game = game
         self.index = index
         
-        self.image_null, self.rect_null = LoadImage('Images', 'Null.jpg', (0, 0, 0))
-        self.image_normal, self.rect_normal = LoadImage('Images/Ingredients Border', file_name + '.jpg', None)
-        self.image_over, self.rect_over = LoadImage('Images/Ingredients Border', file_name + '_over.jpg', None)
+        self.image_null, self.rect_null = LoadImage('../images', 'Null.jpg', (0, 0, 0))
+        self.image_normal, self.rect_normal = LoadImage('../images/Ingredients Border', file_name + '.jpg', None)
+        self.image_over, self.rect_over = LoadImage('../images/Ingredients Border', file_name + '_over.jpg', None)
         
         self.mouse_over = False
         self.image, self.rect = self.image_null, self.rect_normal
         self.position = position
-        self.phone_sound = pygame.mixer.Sound('Sounds/Ringing_Phone.wav')
+        self.phone_sound = pygame.mixer.Sound('../sounds/Ringing_Phone.wav')
 
         self.rect.topleft = self.position
 

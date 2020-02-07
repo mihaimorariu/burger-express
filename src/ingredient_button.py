@@ -5,8 +5,8 @@ class IngredientButton(pygame.sprite.Sprite):
     def __init__(self, index, file_name, position, game):
         pygame.sprite.Sprite.__init__(self)
         self.game = game
-        self.image_normal, self.rect_normal = LoadImage('Images/Ingredients Border', file_name + '.jpg', None)
-        self.image_over, self.rect_over = LoadImage('Images/Ingredients Border', file_name + '_over.jpg', None)
+        self.image_normal, self.rect_normal = LoadImage('../images/Ingredients Border', file_name + '.jpg', None)
+        self.image_over, self.rect_over = LoadImage('../images/Ingredients Border', file_name + '_over.jpg', None)
         
         self.mouse_over = False
         self.image, self.rect = self.image_normal, self.rect_normal
@@ -41,7 +41,7 @@ class IngredientButton(pygame.sprite.Sprite):
             self.game.ingredients_stock[self.index] -= 1
             self.game.ingredients_queue.append(self.index)
             
-            swoosh_sound = pygame.mixer.Sound('Sounds/Swoosh03.wav')
+            swoosh_sound = pygame.mixer.Sound('../sounds/Swoosh03.wav')
             swoosh_sound.play()
             
             print 'Ingredients queue: ', self.game.ingredients_queue
