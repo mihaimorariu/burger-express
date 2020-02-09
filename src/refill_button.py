@@ -1,16 +1,20 @@
 import pygame
 from core import LoadImage
 
+
 class IngredientRefillButton(pygame.sprite.Sprite):
     def __init__(self, index, file_name, position, game):
         pygame.sprite.Sprite.__init__(self)
         self.game = game
         self.index = index
-        
-        self.image_null, self.rect_null = LoadImage('../images', 'Null.jpg', (0, 0, 0))
-        self.image_normal, self.rect_normal = LoadImage('../images/Ingredients Border', file_name + '.jpg', None)
-        self.image_over, self.rect_over = LoadImage('../images/Ingredients Border', file_name + '_over.jpg', None)
-        
+
+        self.image_null, self.rect_null = LoadImage(
+            '../images', 'Null.jpg', (0, 0, 0))
+        self.image_normal, self.rect_normal = LoadImage(
+            '../images/Ingredients Border', file_name + '.jpg', None)
+        self.image_over, self.rect_over = LoadImage(
+            '../images/Ingredients Border', file_name + '_over.jpg', None)
+
         self.mouse_over = False
         self.image, self.rect = self.image_null, self.rect_normal
         self.position = position
@@ -26,7 +30,7 @@ class IngredientRefillButton(pygame.sprite.Sprite):
         self.mouse_over = False
         self.phone_sound = None
         self.index = None
-    
+
     def update(self):
         if self.game.show_ingredients_to_order == True:
             if self.game.money >= self.game.ingredients_price[self.index]:
@@ -34,7 +38,7 @@ class IngredientRefillButton(pygame.sprite.Sprite):
                 mouse_x, mouse_y = self.game.hand_cursor.rect.centerx, self.game.hand_cursor.rect.centery
                 button_x, button_y = self.rect.topleft
                 button_width, button_height = self.rect.width, self.rect.height
-            
+
                 if mouse_x in range(button_x, button_x + button_width) and mouse_y in range(button_y, button_y + button_height):
                     if self.mouse_over == False:
                         self.mouse_over = True
@@ -45,7 +49,7 @@ class IngredientRefillButton(pygame.sprite.Sprite):
                 self.image = self.image_over
         else:
             self.image = self.image_null
-            
+
     def OnMouseDown(self):
         if self.game.show_ingredients_to_order == True:
             if self.mouse_over == True and self.game.money >= self.game.ingredients_price[self.index]:
