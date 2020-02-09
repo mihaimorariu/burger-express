@@ -22,8 +22,10 @@ class Client(pygame.sprite.Sprite):
     def __del__(self):
         self.game = None
         self.table_number = None
-        self.image, self.rect = None, None
-        self.image_no_client, self.rect_no_client = None, None
+        self.image = None
+        self.rect = None
+        self.image_no_client = None
+        self.rect_no_client = None
         self.mouse_over = False
         self.active = False
 
@@ -155,12 +157,12 @@ class Client(pygame.sprite.Sprite):
 
     def OnMouseDown(self):
         if self.active == True and self.mouse_over == True:
-            print 'You clicked on customer {0}.'.format(self.table_number)
+            print('You clicked on customer {}.', self.table_number)
 
             if len(self.game.ingredients_queue) > 0:
 
                 if (self.IsCorrectMeal()):
-                    print 'Correct meal'
+                    print('Correct meal')
                     self.game.clients_orders[self.table_number] = -1
                     self.game.clients_waiting_time[self.table_number] = 2
                     self.game.money += self.game.dish_price[self.game.clients_orders[self.table_number]]
@@ -168,7 +170,7 @@ class Client(pygame.sprite.Sprite):
                         '../sounds/cash-register2.wav')
                     success_sound.play()
                 else:
-                    print 'Not correct meal'
+                    print('Not correct meal')
                     self.game.clients_orders[self.table_number] = -2
                     self.game.clients_waiting_time[self.table_number] = 2
                     self.game.unsatisfied_customers += 1

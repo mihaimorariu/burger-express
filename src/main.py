@@ -11,9 +11,9 @@ from client import Client
 from gui import *
 
 if not pygame.font:
-    print 'Warning, fonts disabled'
+    print('Warning, fonts disabled')
 if not pygame.mixer:
-    print 'Warning, sound disabled'
+    print('Warning, sound disabled')
 
 
 class Game:
@@ -103,7 +103,7 @@ class Game:
 
         number_of_ingredients = len(Game.ingredients_file_names)
 
-        for index in range(0, number_of_ingredients / 3):
+        for index in range(0, number_of_ingredients // 3):
             # Buttons from the bottom-left corner
 
             file_name = Game.ingredients_file_names[index * 3]
@@ -303,7 +303,7 @@ class Game:
                     self.clients_waiting_time[table_number] = (
                         25 - client_mood*3)  # 13 / 10 / 7 seconds
 
-                    print "A new client showed up at table position: " + str(table_number)
+                    print('A new client showed up at table position: ', str(table_number))
             #    now update available_places and number_of_available_places
                     available_places = [i for i in range(
                         len(self.clients_orders)) if self.clients_orders[i] == 0]
@@ -327,7 +327,7 @@ class Game:
                     self.clients_type[table_number] = 0
                     self.clients_orders[table_number] = 0
                     self.clients_waiting_time[table_number] = -1
-                    print 'Client {0} left the table -> {1}'.format(str(table_number), str(self.clients_orders))
+                    print('Client {} left the table -> {}'.format(str(table_number), str(self.clients_orders)))
 
             if int(time.time() - self.time_start) != self.elapsed:
                 self.elapsed = int(time.time() - self.time_start)

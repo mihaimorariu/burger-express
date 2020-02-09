@@ -10,7 +10,8 @@ class RestaurantCounter(pygame.sprite.Sprite):
         self.rect.bottomleft = (0, game.background.get_height() - 237)
 
     def __del__(self):
-        self.image, self.rect = None, None
+        self.image = None
+        self.rect = None
 
 
 class RestaurantKitchen(pygame.sprite.Sprite):
@@ -20,7 +21,8 @@ class RestaurantKitchen(pygame.sprite.Sprite):
         self.rect.topleft = (0, game.background.get_height() - 240)
 
     def __del__(self):
-        self.image, self.rect = None, None
+        self.image = None
+        self.rect = None
 
 
 class KitchenTray(pygame.sprite.Sprite):
@@ -30,7 +32,8 @@ class KitchenTray(pygame.sprite.Sprite):
         self.rect.topleft = (280, game.background.get_height() - 230)
 
     def __del__(self):
-        self.image, self.rect = None, None
+        self.image = None
+        self.rect = None
 
 
 class IngredientCounterWidget(pygame.sprite.Sprite):
@@ -48,7 +51,8 @@ class IngredientCounterWidget(pygame.sprite.Sprite):
         self.index = None
         self.game = None
         self.gone = None
-        self.image, self.rect = None, None
+        self.image = None
+        self.rect = None
 
     def update(self):
         self.image = self.font.render(' {0} '.format(
@@ -71,8 +75,10 @@ class IngredientPriceWidget(pygame.sprite.Sprite):
         self.index = None
         self.game = None
         self.font = None
-        self.image_null, self.rect_null = None, None
-        self.image, self.rect = None, None
+        self.image_null = None
+        self.rect_null = None
+        self.image = None
+        self.rect = None
         self.position = None
 
     def update(self):
@@ -100,7 +106,8 @@ class MoneyTimerWidget(pygame.sprite.Sprite):
 
     def __del__(self):
         self.font = None
-        self.image, self.rect = None, None
+        self.image = None
+        self.rect = None
         self.game = None
 
     def update(self):
@@ -149,7 +156,7 @@ class HandCursor(pygame.sprite.Sprite):
          #   self.hand_state.append(hand_state)
 
             if pos is None:
-                #print "An error occured while computing the cursor position based on the hand's location. No hand contour could be found."
+                #print('An error occured while computing the cursor position based on the hand's location. No hand contour could be found.')
                 pass
             else:
                 self.rect.midtop = pos
@@ -187,8 +194,10 @@ class TraySlot(pygame.sprite.Sprite):
     def __del__(self):
         self.game = None
         self.index = None
-        self.image_null, self.rect_null = None, None
-        self.image, self.rect = None, None
+        self.image_null = None
+        self.rect_null = None
+        self.image = None
+        self.rect = None
 
     def update(self):
         if len(self.game.ingredients_queue) >= self.index + 1:
@@ -212,7 +221,8 @@ class DishPreferenceWidget(pygame.sprite.Sprite):
     def __del__(self):
         self.game = None
         self.index = None
-        self.image, self.rect = None
+        self.image = None
+        self.rect = None
 
     def update(self):
         if self.game.clients_orders[self.index] > 0:
@@ -250,7 +260,8 @@ class DishPreferenceCounter(pygame.sprite.Sprite):
 
     def __del__(self):
         self.fot = None
-        self.image, self.rect = None
+        self.image = None
+        self.rect = None
         self.index = None
         self.game = None
 
@@ -278,7 +289,8 @@ class CancelButton(pygame.sprite.Sprite):
 
     def __del__(self):
         self.game = None
-        self.image, self.rect = None, None
+        self.image = None
+        self.rect = None
         self.mouse_over = False
 
     def update(self):
@@ -305,7 +317,8 @@ class PhoneButtonWidget(pygame.sprite.Sprite):
 
     def __del__(self):
         self.game = None
-        self.image, self.rect = None, None
+        self.image = None
+        self.rect = None
         self.mouse_over = False
 
     def update(self):
@@ -325,7 +338,7 @@ class PhoneButtonWidget(pygame.sprite.Sprite):
             self.game.show_ingredients_to_order = True
             self.game.pause = True
 
-            print 'You clicked on the phone button'
+            print('You clicked on the phone button')
 
 
 class CustomerSatisfactionWidget(pygame.sprite.Sprite):
@@ -343,7 +356,8 @@ class CustomerSatisfactionWidget(pygame.sprite.Sprite):
     def __del__(self):
         self.font = None
         self.game = None
-        self.image, self.rect = None, None
+        self.image = None
+        self.rect = None
 
     def update(self):
         if self.game.level == self.game.max_levels + 1:
@@ -365,7 +379,8 @@ class WinLostWidget(pygame.sprite.Sprite):
 
     def __del__(self):
         self.game = None
-        self.image, self.rect = None, None
+        self.image = None
+        self.rect = None
 
     def update(self):
         if self.game.unsatisfied_customers == self.game.max_number_of_unsatisfied_customers:
@@ -392,7 +407,8 @@ class QuestionMarkWidget(pygame.sprite.Sprite):
 
     def __del__(self):
         self.game = None
-        self.image, self.rect = None, None
+        self.image = None
+        self.rect = None
         self.mouse_over = False
 
     def update(self):
@@ -411,7 +427,7 @@ class QuestionMarkWidget(pygame.sprite.Sprite):
         if self.mouse_over == True and self.game.pause == False:
             self.game.show_recipe_book = True
             self.game.pause = True
-            print 'You clicked on Recipe Book'
+            print('You clicked on Recipe Book')
 
 
 class WelcomeMessageWindow(pygame.sprite.Sprite):
@@ -430,8 +446,10 @@ class WelcomeMessageWindow(pygame.sprite.Sprite):
 
     def __del__(self):
         self.game = None
-        self.image_welcome, self.rect_welcome = None, None
-        self.image_null, self.rect_null = None, None
+        self.image_welcome = None
+        self.rect_welcome = None
+        self.image_null = None
+        self.rect_null = None
         self.mouse_over = False
 
     def update(self):

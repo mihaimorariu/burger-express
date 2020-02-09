@@ -24,9 +24,12 @@ class IngredientRefillButton(pygame.sprite.Sprite):
 
     def __del__(self):
         self.game = None
-        self.image_null, self.rect_null = None, None
-        self.image_normal, self.rect_normal = None, None
-        self.image_over, self.rect_over = None, None
+        self.image_null = None
+        self.rect_null = None
+        self.image_normal = None
+        self.rect_normal = None
+        self.image_over = None
+        self.rect_over = None
         self.mouse_over = False
         self.phone_sound = None
         self.index = None
@@ -58,4 +61,4 @@ class IngredientRefillButton(pygame.sprite.Sprite):
                 self.phone_sound.stop()
                 self.phone_sound.play()
                 self.mouse_over = False
-                print 'You clicked on {0}'.format(str(self.index))
+                print('You clicked on {}'.format(str(self.index)))

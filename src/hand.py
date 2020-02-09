@@ -111,7 +111,7 @@ class HandTracking:
         cv.Flip(current_frame, current_frame, 1)
 
         if current_frame is None:
-            print "Unable to query frame from webcam device."
+            print('Unable to query frame from webcam device.')
             return None
 
         hand_skin, hand_contour, hull4defects = self.DetectHandSkin(

@@ -18,8 +18,10 @@ class IngredientButton(pygame.sprite.Sprite):
 
     def __del__(self):
         self.game = None
-        self.image_normal, self.rect_normal = None, None
-        self.image_over, self.rect_over = None, None
+        self.image_normal = None
+        self.rect_normal = None
+        self.image_over = None
+        self.rect_over = None
         self.mouse_over = False
         self.index = None
 
@@ -47,4 +49,4 @@ class IngredientButton(pygame.sprite.Sprite):
             swoosh_sound = pygame.mixer.Sound('../sounds/Swoosh03.wav')
             swoosh_sound.play()
 
-            print 'Ingredients queue: ', self.game.ingredients_queue
+            print('Ingredients queue: ', self.game.ingredients_queue)

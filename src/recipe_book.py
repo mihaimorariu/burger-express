@@ -18,8 +18,10 @@ class RecipeBookWindow(pygame.sprite.Sprite):
 
     def __del__(self):
         self.game = None
-        self.image_null, self.rect_null = None, None
-        self.image_normal, self.rect_normal = None, None
+        self.image_null = None
+        self.rect_null = None
+        self.image_normal = None
+        self.rect_normal = None
         self.mouse_over = False
 
     def update(self):
@@ -29,7 +31,7 @@ class RecipeBookWindow(pygame.sprite.Sprite):
             button_x, button_y = self.rect.topleft
             button_width, button_height = self.rect.width, self.rect.height
 
-            if mouse_x in range(button_x, button_x + button_width) and mouse_y in range(button_y, button_y + button_height / 3):
+            if mouse_x in range(button_x, button_x + button_width) and mouse_y in range(button_y, button_y + button_height // 3):
                 if self.mouse_over == False:
                     self.mouse_over = True
             else:
